@@ -39,6 +39,10 @@ rec {
     platform = platforms.armv7l-hf-multiplatform;
   };
 
+  armv7l-hf-multiplatform-musl = armv7l-hf-multiplatform // {
+    config = "armv7l-unknown-linux-musleabihf";
+  };
+
   aarch64-multiplatform = {
     config = "aarch64-unknown-linux-gnu";
     platform = platforms.aarch64-multiplatform;
