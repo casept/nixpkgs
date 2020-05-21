@@ -360,6 +360,26 @@ rec {
     };
   };
 
+  mips-multiplatform = {
+    name = "mips-multiplatform";
+    kernelMajor = "2.6";
+    kernelArch = "mips";
+    gcc = {
+      arch = "mips32";
+      float = "soft";
+    };
+  };
+
+  mipsel-multiplatform = {
+    name = "mipsel-multiplatform";
+    kernelMajor = "2.6";
+    kernelArch = "mipsel";
+    gcc = {
+      arch = "mips32";
+      float = "soft";
+    };
+  };
+
   fuloong2f_n32 = {
     name = "fuloong2f_n32";
     kernelMajor = "2.6";

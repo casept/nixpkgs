@@ -92,6 +92,15 @@ rec {
     config = "aarch64-unknown-linux-musl";
   };
 
+  mipsel-musl = {
+    config = "mipsel-unknown-linux-musl";
+    platform = platforms.mipsel-multiplatform;
+  };
+  mips-musl = {
+    config = "mips-unknown-linux-musl";
+    platform = platforms.mips-multiplatform;
+  };
+
   gnu64 = { config = "x86_64-unknown-linux-gnu"; };
   gnu32  = { config = "i686-unknown-linux-gnu"; };
 
