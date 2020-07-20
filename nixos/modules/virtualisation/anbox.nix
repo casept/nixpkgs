@@ -73,8 +73,18 @@ in
 
     environment.systemPackages = with pkgs; [ anbox ];
 
-    boot.kernelModules = [ "ashmem_linux" "binder_linux" ];
-    boot.extraModulePackages = [ kernelPackages.anbox ];
+    # On Linux < 5.7 we need custom anbox modules, but newer kernels have them mainlined
+    boot = mkMerge [
+      (mkIf
+        (!versionAtLeast (getVersion config.boot.kernelPackages.kernel) "5.7") {
+          kernelModules = [ "ashmem_linux" "binder_linux" ];
+          extraModulePackages = [ kernelPackages.anbox ];
+        })
+      (mkIf
+        (versionAtLeast (getVersion config.boot.kernelPackages.kernel) "5.7") {
+          kernelModules = [ "ashmem" "binder" ];
+        })
+    ];
 
     services.udev.extraRules = ''
       KERNEL=="ashmem", NAME="%k", MODE="0666"

@@ -8,6 +8,7 @@
 , libGL
 , libglvnd
 , glib
+, glm
 , git
 , SDL2
 , SDL2_image
@@ -45,13 +46,13 @@ in
 
 stdenv.mkDerivation rec {
   pname = "anbox";
-  version = "unstable-2019-11-15";
+  version = "unstable-2020-07-18";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "0a49ae08f76de7f886a3dbed4422711c2fa39d10";
-    sha256 = "09l56nv9cnyhykclfmvam6bkcxlamwbql6nrz9n022553w92hkjf";
+    rev = "dc09bb83fe5c8ad36f933a5ec77804475e093fa6";
+    sha256 = "0fw92cn9hib19hhbg8vlwj174mz10w3zlz36fi2xdqx8wscnsllr";
   };
 
   nativeBuildInputs = [
@@ -59,7 +60,7 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    cmake pkgconfig dbus boost libcap gtest systemd mesa glib
+    cmake pkgconfig dbus boost libcap gtest systemd mesa glib glm
     SDL2 SDL2_image protobuf protobufc properties-cpp lxc python
     libGL
   ];

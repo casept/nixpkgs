@@ -2,18 +2,18 @@
 
 stdenv.mkDerivation {
   pname = "anbox-modules";
-  version = "2019-11-15-" + kernel.version;
+  version = "2020-06-14-" + kernel.version;
 
   src = fetchFromGitHub {
     owner = "anbox";
     repo = "anbox-modules";
-    rev = "e0a237e571989987806b32881044c539db25e3e1";
-    sha256 = "1km1nslp4f5znwskh4bb1b61r1inw1dlbwiyyq3rrh0f0agf8d0v";
+    rev = "98f0f3b3b1eeb5a6954ca15ec43e150b76369086";
+    sha256 = "0pb807h0lzi12xfdy6c59krw7kirbx9zbgspmbcddd88hr1wj47b";
   };
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  KERNEL_SRC="${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";
+  KERNEL_SRC = "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";
 
   buildPhase = ''
     for d in ashmem binder;do
@@ -36,7 +36,8 @@ stdenv.mkDerivation {
     homepage = "https://github.com/anbox/anbox-modules";
     license = licenses.gpl2;
     platforms = platforms.linux;
-    broken = (versionOlder kernel.version "4.4") || (kernel.features.grsecurity);
+    broken = (versionOlder kernel.version "4.4") || (kernel.features.grsecurity)
+      || (versionAtLeast kernel.version "5.7");
     maintainers = with maintainers; [ edwtjo ];
   };
 
