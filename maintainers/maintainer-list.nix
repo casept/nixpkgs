@@ -4825,6 +4825,13 @@
     github = "casaca24";
     githubId = 87252279;
   };
+  casept = {
+    name = "Davids Paskevics";
+    github = "casept";
+    githubId = 21053871;
+    email = "davids.paskevics@gmail.com";
+    matrix = "@casept:matrix.org";
+  };
   casey = {
     email = "casey@rodarmor.net";
     github = "casey";
